@@ -4,6 +4,7 @@ import gui.GuiJob;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 
 public class Job implements Runnable{
 	DownloadController parent;
@@ -99,8 +100,8 @@ public class Job implements Runnable{
 
 		try {
 			//Uncomment to redirect process output to console.
-			//makeDlProc.redirectError(Redirect.INHERIT);
-			//makeDlProc.redirectOutput(Redirect.INHERIT);
+			makeDlProc.redirectError(Redirect.INHERIT);
+			makeDlProc.redirectOutput(Redirect.INHERIT);
 			dl_proc = makeDlProc.start();
 			dl_proc.waitFor();
 		} catch (IOException | InterruptedException e) {
@@ -147,7 +148,7 @@ public class Job implements Runnable{
 		}else{
 			setStatus("DOWNLOADED");
 		}
-		makeConvProc = new ProcessBuilder(base_dir + "/res/ffmpeg", "-i",
+		makeConvProc = new ProcessBuilder(base_dir + "/dev/res/ffmpeg", "-i",
 				temp_dir.getAbsolutePath() + "/" + downloadedFile.getName(), "-vn","-y", "-acodec", "libmp3lame",
 				base_dir + "/out/"
 						+ downloadedFile.getName().replace(".mp4", ".mp3"));

@@ -15,16 +15,12 @@ public class DownloadController {
 	 * status: download and conversion gui with one row per job
 	 */
 
-	static final String dir_path = System.getProperty("user.home")
-			+ "/ytdl_dir/";
-	static final File dir = new File(System.getProperty("user.home")
-			+ "/ytdl_dir");
-	static final File output = new File(System.getProperty("user.home")
-			+ "/ytdl_dir/out");
-	static final File res = new File(System.getProperty("user.home")
-			+ "/ytdl_dir/res");
-	static final File job_dir = new File(System.getProperty("user.home")
-			+ "/ytdl_dir/jobs");
+	static final String dir_path = System.getProperty("user.home") + "/ytdl_dir/";
+	static final File dir = new File(dir_path);
+	static final File dev = new File(dir + "/dev");
+	static final File output = new File(dir + "/out");
+	static final File res = new File(dev + "/res");
+	static final File job_dir = new File(dev + "/jobs");
 
 	Scanner scan = new Scanner(System.in);
 	List<Job> jobs = new ArrayList<Job>();
